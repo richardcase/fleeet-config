@@ -1,0 +1,56 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - fleet.squaremo.dev
+  resources:
+  - assemblages
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - fleet.squaremo.dev
+  resources:
+  - assemblages/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - fleet.squaremo.dev
+  resources:
+  - assemblages/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - kustomize.toolkit.fluxcd.io
+  resources:
+  - kustomizations
+  verbs:
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - source.toolkit.fluxcd.io
+  resources:
+  - gitrepositories
+  verbs:
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - watch
